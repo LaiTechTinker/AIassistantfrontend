@@ -1,0 +1,103 @@
+.business-page-container {
+  background-color: #D1D5DB;
+  padding: 10px 10px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.business-header {
+  width: 100%;
+  max-width: 850px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.business-title {
+  color: #0f172a;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.business-subtitle {
+  color: #64748b;
+  font-size: 16px;
+  margin: 0;
+}
+
+.business-form-card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 850px;
+  border-radius: 12px;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  display: flex;
+  align-items: center;
+}
+
+.icon-left {
+  margin-right: 6px;
+  font-size: 14px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1e293b;
+  background-color: #fff;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  border-color: #3b82f6;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+/* Custom dropdown arrow if needed, though standard select is used here */
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.timezone-warning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f59e0b;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.timezone-warning i {
+  font-size: 14px;
+}

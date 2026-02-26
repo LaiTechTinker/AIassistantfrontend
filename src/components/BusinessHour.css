@@ -1,0 +1,195 @@
+.hours-container {
+  background-color: #D1D5DB;
+  padding: 0 20px 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.hours-card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 850px;
+  border-radius: 12px;
+  padding: 24px;
+  box-sizing: border-box;
+  border: 1px solid #e2e8f0;
+}
+
+.hours-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0369a1;
+  margin-bottom: 20px;
+}
+
+.hours-header i {
+  font-size: 16px;
+}
+
+.hours-header-text {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.quick-selectors-section {
+  margin-bottom: 24px;
+}
+
+.selectors-label {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0 0 12px 0;
+}
+
+.selectors-btn-group {
+  display: flex;
+  gap: 12px;
+}
+
+.selector-btn {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 13px;
+  color: #1e293b;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Day Rows */
+.days-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.day-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+}
+
+.day-label-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 160px;
+}
+
+.day-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  width: 80px;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e2e8f0;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: #0f172a;
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(22px);
+}
+
+/* Time Inputs */
+.time-inputs-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.time-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.time-input {
+  width: 110px;
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1e293b;
+  background: #fff;
+}
+
+.time-icon {
+  position: absolute;
+  right: 10px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.time-separator {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+}
+
+.copy-btn:hover {
+  color: #1e293b;
+}
+
+@media (max-width: 600px) {
+  .day-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .selectors-btn-group {
+    flex-direction: column;
+  }
+}

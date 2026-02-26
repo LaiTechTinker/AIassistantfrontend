@@ -5,7 +5,7 @@ import LandingPage from '../src/Pages/LandingPage';
 import Dashboard from "./Pages/Dashboard";
 import Calls from "./Pages/Calls";
 import Account from "./Pages/AccountSetting";
-import Assistant from "./Pages/Assistant";
+import Assistant from "./Pages/AssistantBusiness";
 import SetUp from "./Pages/SetUp";
 import Subscription from "./Pages/Subscription";
 // import Support from "./pages/Support";
@@ -31,7 +31,7 @@ function App() {
           <Route path="calls" element={<Calls />} />
           <Route path="account/settings" element={<Account />} />
            <Route path="account/subscription" element={<Subscription />} />
-          <Route path="assistant" element={<Assistant />} />
+          <Route path="assistant/business-info" element={<Assistant />} />
           {/* <Route path="support" element={<Support />} /> */}
         </Route>
       </Routes>
