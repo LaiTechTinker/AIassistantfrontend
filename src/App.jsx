@@ -8,6 +8,9 @@ import Account from "./Pages/AccountSetting";
 import Assistant from "./Pages/AssistantBusiness";
 import SetUp from "./Pages/SetUp";
 import Subscription from "./Pages/Subscription";
+import Notifications from "./Pages/Notifications";
+import Profile from "./Pages/AgentProfile";
+
 // import Support from "./pages/Support";
 
 import './App.css';
@@ -32,6 +35,8 @@ function App() {
           <Route path="account/settings" element={<Account />} />
            <Route path="account/subscription" element={<Subscription />} />
           <Route path="assistant/business-info" element={<Assistant />} />
+           <Route path="assistant/notifications" element={<Notifications />} />
+            <Route path="assistant/profile" element={<Profile />} />
           {/* <Route path="support" element={<Support />} /> */}
         </Route>
       </Routes>
