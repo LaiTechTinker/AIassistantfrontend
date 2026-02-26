@@ -1,0 +1,107 @@
+/* Setup Header Card */
+.setup-header-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+/* Title */
+.setup-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* Subtitle */
+.setup-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Progress Container */
+.progress-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4.5rem;
+  position: relative;
+}
+
+/* Step Wrapper */
+.step-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Step Circle */
+.step-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #1f1f1f;
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: 0.3s ease;
+  z-index: 2;
+}
+
+/* Completed Step */
+.step-circle.completed {
+  background: linear-gradient(90deg, #A855F7, #EC4899);
+  border: none;
+  color: white;
+}
+
+/* Active Step */
+.step-circle.active {
+  border: 2px solid #A855F7;
+  color: #A855F7;
+}
+
+/* Step Label */
+.step-label {
+  position: absolute;
+  top: 55px;
+  width: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Completed Label */
+.completed-text {
+  color: #A855F7;
+}
+
+/* Active Label */
+.active-text {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Line Between Steps */
+.step-line {
+  position: absolute;
+  height: 2px;
+  width: 100px;
+  background-color: var(--border-color);
+  left: 50px;
+  top: 20px;
+  z-index: 1;
+}
+
+/* Completed Line */
+.line-completed {
+  background: linear-gradient(90deg, #A855F7, #EC4899);
+}

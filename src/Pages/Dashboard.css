@@ -1,0 +1,345 @@
+/* Core Variables */
+:root {
+  --bg-color: #0d0d0d;
+  --sidebar-bg: #141414;
+  --card-bg: #1a1a1a;
+  --border-color: #222222;
+  --text-main: #ffffff;
+  --text-muted: #888888;
+  --gradient: linear-gradient(90deg, #A855F7, #EC4899);
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+}
+
+/* Utilities */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: var(--gradient);
+  color: white;
+}
+
+/* Layout */
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  border-radius: 0px 10px 10px 0px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2.5rem;
+  padding: 0 1rem;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.3px;
+  color: rgba(255, 255, 255, 0.918);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.0rem;
+  flex-grow: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 12px;
+  text-decoration: none;
+  color: var(--text-muted);
+  background-color: #363131;
+  border-radius: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-item i {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  color :rgb(245, 246, 246);
+}
+
+.nav-item:hover {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+}
+
+/* Active Nav State */
+.nav-item.active {
+  background-color: rgba(168, 85, 247, 0.1);
+  color: var(--text-main);
+  border-left: 3px solid #A855F7;
+}
+
+.nav-item.active i {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+.logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  color: #EC4899;
+  background-color: rgba(236, 72, 153, 0.05);
+}
+
+/* Main Content Area */
+.dashboard-content {
+  flex-grow: 1;
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Page Header */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.header-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Top Stats Cards */
+.top-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.stat-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Data Table */
+.table-wrapper {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.call-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.call-table th {
+  background-color: #1f1f1f;
+  color: var(--text-main);
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Gradient accent top border for the table headers instead of blue */
+.call-table thead {
+  border-top: 3px solid;
+  border-image-source: var(--gradient);
+  border-image-slice: 1;
+}
+
+.th-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.call-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
+}
+
+.call-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 3rem !important;
+  font-style: italic;
+}
+/* Dropdown Wrapper */
+.nav-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Toggle Row */
+.dropdown-toggle {
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* Arrow */
+.dropdown-arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+}
+
+.dropdown-arrow.rotate {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6px;
+  margin-left: 38px;
+  gap: 6px;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Sub Items */
+.dropdown-item {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+}
+
+/* Active Sub Item */
+.dropdown-item.active {
+  background: rgba(168, 85, 247, 0.1);
+  border-left: 3px solid #A855F7;
+  color: var(--text-main);
+}
+
+/* Small Fade Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
