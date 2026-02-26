@@ -4,9 +4,10 @@ import Login from '../src/Pages/Login';
 import LandingPage from '../src/Pages/LandingPage';
 import Dashboard from "./Pages/Dashboard";
 import Calls from "./Pages/Calls";
-import Account from "./Pages/Account";
+import Account from "./Pages/AccountSetting";
 import Assistant from "./Pages/Assistant";
 import SetUp from "./Pages/SetUp";
+import Subscription from "./Pages/Subscription";
 // import Support from "./pages/Support";
 
 import './App.css';
@@ -28,7 +29,8 @@ function App() {
           <Route index element={<Calls />} />
           <Route  path="setup" element={<SetUp />} />
           <Route path="calls" element={<Calls />} />
-          <Route path="account" element={<Account />} />
+          <Route path="account/settings" element={<Account />} />
+           <Route path="account/subscription" element={<Subscription />} />
           <Route path="assistant" element={<Assistant />} />
           {/* <Route path="support" element={<Support />} /> */}
         </Route>

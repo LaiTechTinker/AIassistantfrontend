@@ -1,0 +1,183 @@
+.plans-outer-container {
+  background-color: #D1D5DB;
+  padding: 0 20px 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.plans-card-wrapper {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 16px;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.plans-header {
+  margin-bottom: 32px;
+}
+
+.plans-icon-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.plans-blue-icon {
+  background-color: #0ea5e9;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.plans-main-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.plans-sub-title {
+  font-size: 14px;
+  color: #64748b;
+  margin: 4px 0 0 0;
+}
+
+/* Grid Layout */
+.plans-grid {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.plan-column {
+  flex: 1;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-column.popular-border {
+  border: 2px solid #0ea5e9;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background-color: #0ea5e9;
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Typography */
+.plan-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 16px 0;
+}
+
+.price-section {
+  margin-bottom: 4px;
+}
+
+.original-price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-decoration: none;
+}
+
+.price-period {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.trial-promo {
+  margin-bottom: 24px;
+}
+
+.trial-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ef4444; /* Red color from screenshot */
+}
+
+.trial-limit {
+  font-size: 13px;
+  font-style: italic;
+  color: #ef4444;
+  margin-top: 4px;
+}
+
+/* Features */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  flex-grow: 1;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.feature-item i {
+  color: #0ea5e9;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Buttons */
+.upgrade-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.upgrade-btn.outline {
+  background: white;
+  border: 1px solid #0ea5e9;
+  color: #0ea5e9;
+}
+
+.upgrade-btn.solid {
+  background: #0ea5e9;
+  border: 1px solid #0ea5e9;
+  color: white;
+}
+
+.upgrade-btn:hover {
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .plans-grid {
+    flex-direction: column;
+  }
+}

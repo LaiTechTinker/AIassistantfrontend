@@ -1,0 +1,117 @@
+/* Page Background */
+.account-page {
+  background: #D1D5DB;
+  min-height: 100vh;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+/* White Card */
+.account-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 800px;
+  padding: 30px 40px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.account-card h2 {
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #111;
+}
+
+/* Profile Upload Row */
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 25px;
+}
+
+.upload-box {
+  flex: 1;
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  color: #555;
+}
+
+.upload-icon {
+  font-size: 28px;
+  color: #7c3aed;
+  margin-bottom: 10px;
+}
+
+.upload-box p {
+  margin: 6px 0;
+}
+
+.upload-box small {
+  color: #888;
+}
+
+.browse {
+  color: #7c3aed;
+  cursor: pointer;
+}
+
+.profile-preview img {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.form-group input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #7c3aed;
+}
+
+/* Save Button */
+.save-btn {
+  background: linear-gradient(135deg, #7c3aed, #9333ea);
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.save-btn:hover {
+  opacity: 0.9;
+}
+
+/* Password Section */
+.password-title {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #111;
+}
