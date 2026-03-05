@@ -2,17 +2,16 @@ import axios from "axios";
 
 // Create an Axios instance
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:8000", // replace with your backend URL
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:8000",
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 10000, // optional: 10 seconds timeout
+  timeout: 10000,
 });
 
-// Optional: Add a request interceptor
+// Add auth token to requests
 api.interceptors.request.use(
   (config) => {
-    // Example: Add auth token if exists
     const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -22,17 +21,43 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Optional: Add a response interceptor
+// Handle responses and errors globally
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Handle common errors globally
     if (error.response) {
-      console.error("API Error:", error.response.status, error.response.data);
+      const { status, data } = error.response;
+      
+      // Handle 401 Unauthorized - Token expired or invalid
+      if (status === 401) {
+        // Clear stored auth data
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        
+        // Redirect to login if not already there
+        if (!window.location.pathname.includes("/login")) {
+          window.location.href = "/login";
+        }
+      }
+      
+      // Return structured error
+      return Promise.reject({
+        status,
+        message: data?.message || "An error occurred",
+        data
+      });
+    } else if (error.request) {
+      // Network error
+      return Promise.reject({
+        status: 0,
+        message: "Network error. Please check your connection."
+      });
     } else {
-      console.error("Network Error:", error.message);
+      return Promise.reject({
+        status: 0,
+        message: error.message || "Unknown error occurred"
+      });
     }
-    return Promise.reject(error);
   }
 );
 

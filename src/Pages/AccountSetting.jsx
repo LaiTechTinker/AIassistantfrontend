@@ -1,7 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
+import api from "../utils/axiosinstance";
+import { API_PATH } from "../utils/apipath";
+import toast from "react-hot-toast";
 import "./Account.css";
 
 const Account = () => {
+  const { user, refreshUser } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: ""
+  });
+
+  // Load user data on mount
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        email: user.email || ""
+      });
+    }
+  }, [user]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await api.post(API_PATH.AUTH.UPDATE_PROFILE, formData);
+      
+      // Refresh user data in context
+      await refreshUser();
+      
+      toast.success("Profile updated successfully!");
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to update profile");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="account-page">
       <div className="account-card">
@@ -19,29 +68,49 @@ const Account = () => {
 
           <div className="profile-preview">
             <img
-              src="https://i.pravatar.cc/150?img=3"
+              src={user?.profileImage || "https://i.pravatar.cc/150?img=3"}
               alt="profile"
             />
           </div>
         </div>
 
         {/* Form Fields */}
-        <div className="form-group">
-          <label>First Name</label>
-          <input type="text" defaultValue="Luke" />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>First Name</label>
+            <input 
+              type="text" 
+              name="firstName"
+              value={formData.firstName} 
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Last Name</label>
-          <input type="text" defaultValue="Damant" />
-        </div>
+          <div className="form-group">
+            <label>Last Name</label>
+            <input 
+              type="text" 
+              name="lastName"
+              value={formData.lastName} 
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Email Address</label>
-          <input type="email" defaultValue="lukedamant24@gmail.com" />
-        </div>
+          <div className="form-group">
+            <label>Email Address</label>
+            <input 
+              type="email" 
+              name="email"
+              value={formData.email} 
+              onChange={handleChange}
+              disabled
+            />
+          </div>
 
-        <button className="save-btn">Save Changes</button>
+          <button type="submit" className="save-btn" disabled={loading}>
+            {loading ? "Saving..." : "Save Changes"}
+          </button>
+        </form>
 
         {/* Change Password Section */}
         <h3 className="password-title">Change Password</h3>

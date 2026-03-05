@@ -1,8 +1,52 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import {React,useState,useEffect}from 'react';
+import { Link,useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast';
+import {useAuth} from "../context/AuthContext";
+import api from "../utils/axiosinstance"
+import { API_PATH } from '../utils/apipath';
 import Logo from "../images/logo.png";
+
 import './SignUp.css';
 const Signup = () => {
+   const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const {login}=useAuth()
+  const navigator=useNavigate()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!firstName || !lastName || !email || !password || !confirmPassword) return;
+    if(password !== confirmPassword){
+      toast.error("passwords do not match")
+      return;
+    }
+    setLoading(true);
+
+    try {
+       await api.post(API_PATH.AUTH.REGISTER, { firstName, lastName, email, password,confirmPassword });
+      // const token= response.data.token
+      // const profileResponse=await api.get(API_PATH.AUTH.GET_PROFILE,{
+      //   headers:{Authorization:`Bearer ${token}`},
+      // })
+      // login(profileResponse.data.message,token)
+      localStorage.setItem("email", email);
+
+      toast.success("verification code sent to your email")
+      navigator("/verify-email")
+    } catch (error) {
+     localStorage.clear()
+      toast.error(error.response?.data?.message || "Signup failed. Please try again.")
+      console.log(error.message)
+      console.error("signup failed", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="signup-card">
       {/* Left Panel */}
@@ -44,25 +88,47 @@ const Signup = () => {
         <form className="signup-form">
             <div className="input-field">
             <label className="input-label">FirstName</label>
-            <input type="text" placeholder="Enter your first name" className="input"/>
+            <input type="text" placeholder="Enter your first name" className="input" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+             {!firstName && <p className="error-text">First Name is required</p>}
           </div>
           <div className="input-field">
             <label className="input-label">LastName</label>
-            <input type="text" placeholder="Enter your last name" className="input"/>
+            <input type="text" placeholder="Enter your last name" className="input" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+             {!lastName && <p className="error-text">Last Name is required</p>}
           </div>
           <div className="input-field">
             <label className="input-label">Email</label>
-            <input type="email" placeholder="Enter your email" className="input"/>
+            <input type="email" placeholder="Enter your email" autoComplete='email' className="input" value={email} onChange={(e) => setEmail(e.target.value)}/>
           </div>
           <div className="input-field">
             <label className="input-label">Password</label>
-            <input type="password" placeholder="Create a password" className="input"/>
+            <div className="passwraper">
+            <input type={showPassword ? "text" : "password"} placeholder="Create a password" className="input" autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+             <span
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <i className="fa-solid fa-eye-slash"></i> : <i className="fa-solid fa-eye"></i>}
+            </span>
+            </div>
+             {!password && <p className="error-text">Password is required</p>}
           </div>
            <div className="input-field">
             <label className="input-label">Confirm Password</label>
-            <input type="password" placeholder="Confirm your password" className="input"/>
+            <div className="passwraper">
+            <input  type={showConfirmPassword ? "text" : "password"} placeholder="Confirm your password" className="input" autoComplete="new-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+             <span
+              className="toggle-password"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {showConfirmPassword ? <i className="fa-solid fa-eye-slash"></i> : <i className="fa-solid fa-eye"></i>}
+            </span>
+            </div>
+             {!confirmPassword && <p className="error-text">Confirm Password is required</p>}
           </div>
-          <button type="button" className="button button-primary">Get started</button>
+          <button type="button" className="button button-primary" onClick={handleSubmit} disabled={loading}> {loading && <div className="spinner"></div>}
+            {loading ? "Creating..." : "Sign Up"}
+            </button>
           <button type="button" className="button button-secondary google-button">
             <svg className="google-icon" viewBox="0 0 18 18">
               <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/>
